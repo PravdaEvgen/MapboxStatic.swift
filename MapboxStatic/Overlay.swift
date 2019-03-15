@@ -14,13 +14,13 @@ let allowedCharacterSet: CharacterSet = {
 /**
  A feature that can be drawn atop the map.
  */
-@objc(MBOverlay)
+@objc(MapBoxOverlay)
 public protocol Overlay: NSObjectProtocol {}
 
 /**
  A feature centered over a specific geographic coordinate.
  */
-@objc(MBPoint)
+@objc(MapBoxPoint)
 public protocol Point: Overlay {
     /// The geographic coordinate to place the point at.
     var coordinate: CLLocationCoordinate2D { get }
@@ -29,12 +29,12 @@ public protocol Point: Overlay {
 /**
  A pin-shaped marker image.
  */
-@objc(MBMarkerImage)
+@objc(MapBoxMarkerImage)
 open class MarkerImage: NSObject {
     /**
      The size of a marker.
      */
-    @objc(MBMarkerSize)
+    @objc(MapBoxMarkerSize)
     public enum Size: Int, CustomStringConvertible {
         /**
          A small marker.
@@ -215,7 +215,7 @@ open class Marker: MarkerImage, Point {
  
  The marker image is always centered on the specified location. When creating an asymmetric marker like a pin, make sure that the tip of the pin is at the center of the image.
  */
-@objc(MBCustomMarker)
+@objc(MapBoxCustomMarker)
 open class CustomMarker: NSObject, Overlay {
     /// The geographic coordinate to place the marker at.
     open var coordinate: CLLocationCoordinate2D
@@ -249,7 +249,7 @@ open class CustomMarker: NSObject, Overlay {
  
  GeoJSON features may be styled according to the [simplestyle specification](https://github.com/mapbox/simplestyle-spec).
  */
-@objc(MBGeoJSON)
+@objc(MapBoxGeoJSON)
 open class GeoJSON: NSObject, Overlay {
     /// String representation of the GeoJSON object to display.
     @objc open var objectString: String
@@ -285,7 +285,7 @@ open class GeoJSON: NSObject, Overlay {
 /**
  A polyline or polygon placed along a path atop the map.
  */
-@objc(MBPath)
+@objc(MapBoxPath)
 open class Path: NSObject, Overlay {
     /**
      An array of geographic coordinates defining the path of the overlay.

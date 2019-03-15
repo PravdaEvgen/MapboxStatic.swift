@@ -9,7 +9,7 @@
 /**
  A structure defining the viewpoint from which a snapshot is taken.
  */
-@objc(MBSnapshotCamera)
+@objc(MapBoxSnapshotCamera)
 open class SnapshotCamera: NSObject {
     /**
      Vertical field of view, measured in degrees, for determining the altitude of the viewpoint.
@@ -170,7 +170,7 @@ open class SnapshotCamera: NSObject {
  
  The Static API always outputs images in true-color Portable Network Graphics (PNG) format. For other image formats, use a `ClassicSnapshotOptions` object.
  */
-@objc(MBSnapshotOptions)
+@objc(MapBoxSnapshotOptions)
 open class SnapshotOptions: NSObject, SnapshotOptionsProtocol {
     // MARK: Configuring the Map Data
     

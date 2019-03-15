@@ -11,12 +11,12 @@
  
  Typically, you use a `ClassicSnapshotOptions` object to generate a snapshot of a [raster tile set](https://www.mapbox.com/help/define-tileset/#raster-tilesets). If you use `ClassicSnapshotOptions` to display a [vector tile set](https://www.mapbox.com/help/define-tileset/#vector-tilesets), the snapshot image will depict a wireframe representation of the tile set. To generate a static, styled image of a vector tile set, use a `SnapshotOptions` object.
  */
-@objc(MBClassicSnapshotOptions)
+@objc(MapBoxClassicSnapshotOptions)
 open class ClassicSnapshotOptions: NSObject, SnapshotOptionsProtocol {
     /**
      An image format supported by the classic Static API.
      */
-    @objc(MBSnapshotFormat)
+    @objc(MapBoxSnapshotFormat)
     public enum Format: Int, CustomStringConvertible {
         /// True-color Portable Network Graphics format.
         case png

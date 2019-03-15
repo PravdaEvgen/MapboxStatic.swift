@@ -9,7 +9,7 @@
 typealias JSONDictionary = [String: Any]
 
 /// Indicates that an error occurred in MapboxStatic.
-public let MBStaticErrorDomain = "MBStaticErrorDomain"
+public let MapBoxStaticErrorDomain = "MapBoxStaticErrorDomain"
 
 /// The Mapbox access token specified in the main application bundle’s Info.plist.
 let defaultAccessToken = Bundle.main.object(forInfoDictionaryKey: "MGLMapboxAccessToken") as? String
@@ -63,7 +63,7 @@ let userAgent: String = {
     return components.joined(separator: " ")
 }()
 
-@objc(MBSnapshotOptionsProtocol)
+@objc(MapBoxSnapshotOptionsProtocol)
 public protocol SnapshotOptionsProtocol: NSObjectProtocol {
     var path: String { get }
     var params: [URLQueryItem] { get }
@@ -74,7 +74,7 @@ public protocol SnapshotOptionsProtocol: NSObjectProtocol {
  
  The snapshot image can be used in an image view (`UIImage` on iOS and tvOS, `NSImage` on macOS, `WKImage` on watchOS). The image does not respond to user gestures. To add interactivity, use the [Mapbox Maps SDK for iOS](https://www.mapbox.com/ios-sdk/) or the [Mapbox Maps SDK for macOS](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/macos/), which can optionally display raster tiles. If you are already using the map SDKs for iOS or macOS, use the `MGLMapSnapshotter` object instead of this class to take advantage of caching and offline packs.
  */
-@objc(MBSnapshot)
+@objc(MapBoxSnapshot)
 open class Snapshot: NSObject {
     #if os(OSX)
     public typealias Image = NSImage
@@ -250,7 +250,7 @@ open class Snapshot: NSObject {
         if let error = error {
             userInfo[NSUnderlyingErrorKey] = error
         }
-        return NSError(domain: error?.domain ?? MBStaticErrorDomain, code: error?.code ?? -1, userInfo: userInfo)
+        return NSError(domain: error?.domain ?? MapBoxStaticErrorDomain, code: error?.code ?? -1, userInfo: userInfo)
     }
 }
 

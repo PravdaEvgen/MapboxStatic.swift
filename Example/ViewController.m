@@ -26,18 +26,18 @@ static NSString * const AccessToken = @"pk.eyJ1IjoibWFwYm94IiwiYSI6ImNqMHFiNXN4Z
     [super viewDidAppear:animated];
     
     NSURL *styleURL = [NSURL URLWithString:@"mapbox://styles/mapbox/streets-v9"];
-    MBSnapshotCamera *camera = [MBSnapshotCamera cameraLookingAtCenterCoordinate:CLLocationCoordinate2DMake(45, -122)
+    MapBoxSnapshotCamera *camera = [MapBoxSnapshotCamera cameraLookingAtCenterCoordinate:CLLocationCoordinate2DMake(45, -122)
                                                                        zoomLevel:6];
-    MBSnapshotOptions *options = [[MBSnapshotOptions alloc] initWithStyleURL:styleURL
+    MapBoxSnapshotOptions *options = [[MapBoxSnapshotOptions alloc] initWithStyleURL:styleURL
                                                                       camera:camera
                                                                         size:self.imageView.bounds.size];
     CLLocationCoordinate2D coords[] = {
         CLLocationCoordinate2DMake(45, -122),
         CLLocationCoordinate2DMake(45, -124),
     };
-    MBPath *path = [[MBPath alloc] initWithCoordinates:coords count:sizeof(coords) / sizeof(coords[0])];
+    MapBoxPath *path = [[MapBoxPath alloc] initWithCoordinates:coords count:sizeof(coords) / sizeof(coords[0])];
     options.overlays = @[path];
-    MBSnapshot *snapshot = [[MBSnapshot alloc] initWithOptions:options accessToken:AccessToken];
+    MapBoxSnapshot *snapshot = [[MapBoxSnapshot alloc] initWithOptions:options accessToken:AccessToken];
     __weak typeof(self) weakSelf = self;
     [snapshot imageWithCompletionHandler:^(UIImage * _Nullable image, NSError * _Nullable error) {
         typeof(weakSelf) strongSelf = weakSelf;
